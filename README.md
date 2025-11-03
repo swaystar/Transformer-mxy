@@ -467,14 +467,6 @@ OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already in
 - Shaw et al., "Self-Attention with Relative Position Representations" (2018)
 - Katharopoulos et al., "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention" (2020)
 
----
 
-## 📄 许可证
-
-本项目为作业实现，仅供学习和研究使用。
-
----
-
-**最后更新**：2024年
-**维护者**：Transformer 作业实现
+**最后更新**：2025年
 
