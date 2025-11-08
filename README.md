@@ -1,15 +1,15 @@
 # Transformer 作业实现
 
 本仓库实现了一个从零搭建的基于 PyTorch 的小规模 Transformer 模型，支持：
-- ✅ **语言模型（Language Model）**：自回归生成
-- ✅ **编码器-解码器（Encoder-Decoder）**：序列到序列任务
-- ✅ **多头注意力**：标准注意力 + 线性注意力（O(n) 复杂度）
-- ✅ **位置编码**：绝对位置编码 + 相对位置编码
-- ✅ **完整训练流程**：学习率调度、梯度裁剪、AdamW、模型保存、训练曲线可视化
+-  **语言模型（Language Model）**：自回归生成
+-  **编码器-解码器（Encoder-Decoder）**：序列到序列任务
+-  **多头注意力**：标准注意力 + 线性注意力（O(n) 复杂度）
+-  **位置编码**：绝对位置编码 + 相对位置编码
+-  **完整训练流程**：学习率调度、梯度裁剪、AdamW、模型保存、训练曲线可视化
 
 ---
 
-## 📋 目录结构
+##  目录结构
 
 ```
 Transformer/
@@ -35,7 +35,7 @@ Transformer/
 
 ---
 
-## 🖥️ 硬件要求
+##  硬件要求
 
 ### **最低要求**
 - **CPU**：支持 Python 3.8+ 的现代 CPU
@@ -56,14 +56,6 @@ Transformer/
 - 优先使用 **GPU**（如果可用）
 - 否则使用 **CPU**
 - 支持 CUDA、MPS（Apple Silicon）和 CPU
-
-### **性能参考**
-- **CPU 训练**：约 0.5-2 step/s（取决于 CPU 性能）
-- **GPU 训练**：约 10-50+ step/s（取决于 GPU 型号）
-- **单次实验时长**（5000 steps）：
-  - CPU：约 40-200 分钟
-  - GPU：约 2-10 分钟
-
 ---
 
 ## 🔧 环境安装
@@ -97,7 +89,7 @@ python -c "import torch; print(f'PyTorch版本: {torch.__version__}'); print(f'C
 
 ---
 
-## 🚀 快速开始
+##  快速开始
 
 ### **方式一：使用一键运行脚本**
 
@@ -118,9 +110,9 @@ python -m src.train
 
 ---
 
-## 📝 可复现实验的 Exact 命令（含随机种子）
+##  可复现实验的 Exact 命令（含随机种子）
 
-### **⚠️ 重要：以下命令包含固定随机种子，可完全复现实验结果**
+### ** 重要：以下命令包含固定随机种子，可完全复现实验结果**
 
 ### **1. 基础语言模型（推荐配置）**
 
@@ -150,7 +142,6 @@ python -m src.train \
 ```
 
 **预期结果**：
-- 训练时间：约 5-30 分钟（取决于硬件）
 - 最终验证损失：约 1.5-2.5
 - 最终困惑度：约 5-15
 
@@ -276,7 +267,7 @@ python -m src.train \
 
 ---
 
-## ⚙️ 命令行参数说明
+##  命令行参数说明
 
 ### **数据集参数**
 - `--dataset`: 数据集名称（`tiny_shakespeare`）
@@ -327,7 +318,7 @@ python -m src.train \
 
 ---
 
-## 📊 输出文件说明
+##  输出文件说明
 
 训练完成后，在 `results/<exp_name>/` 目录下会生成：
 
@@ -341,10 +332,10 @@ python -m src.train \
 
 ### **2. curves.png**
 详细的训练曲线图（150 DPI），包含 4 个子图：
-- 📊 **训练/验证 Loss 曲线**：对比训练和验证损失的变化
-- 📈 **验证集 Perplexity 曲线**：困惑度下降趋势
-- 📉 **Learning Rate 调度曲线**：学习率变化（对数刻度）
-- 🔍 **过拟合指示器**：训练损失 - 验证损失（用于判断过拟合）
+-  **训练/验证 Loss 曲线**：对比训练和验证损失的变化
+-  **验证集 Perplexity 曲线**：困惑度下降趋势
+-  **Learning Rate 调度曲线**：学习率变化（对数刻度）
+-  **过拟合指示器**：训练损失 - 验证损失（用于判断过拟合）
 
 ### **3. model_best.pt**
 验证集上表现最好的模型权重（PyTorch state_dict 格式）
@@ -354,7 +345,7 @@ python -m src.train \
 
 ---
 
-## 🔍 单独绘制训练曲线
+##  单独绘制训练曲线
 
 如果已有训练日志，可以单独生成图表：
 
@@ -367,7 +358,7 @@ python -m src.train --plot results/exp_default/train_log.json output.png
 
 ---
 
-## 🐛 常见问题
+##  常见问题
 
 ### **1. Windows OpenMP 错误**
 如果遇到以下错误：
@@ -376,7 +367,7 @@ OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already in
 ```
 
 **解决方案**：
-- ✅ **已自动修复**：代码中已在导入 torch 之前设置 `KMP_DUPLICATE_LIB_OK=TRUE`
+-  **已自动修复**：代码中已在导入 torch 之前设置 `KMP_DUPLICATE_LIB_OK=TRUE`
 - 如果仍有问题，可手动设置：
   ```powershell
   $env:KMP_DUPLICATE_LIB_OK="TRUE"
@@ -437,7 +428,7 @@ OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already in
 
 ---
 
-## 🎯 实验复现建议
+##  实验复现建议
 
 ### **推荐的实验配置**
 
@@ -446,7 +437,7 @@ OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already in
    python -m src.train --max_steps 1000 --batch_size 32 --seed 3407
    ```
 
-2. **完整实验（作业要求）**：
+2. **完整实验**：
    使用上面提供的 exact 命令（包含完整参数和随机种子）
 
 3. **对比实验（消融研究）**：
@@ -455,18 +446,11 @@ OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already in
    - 查看 `curves.png` 的曲线对比
 
 ### **确保可复现性**
-- ✅ **固定随机种子**：所有命令都包含 `--seed 3407`
-- ✅ **固定超参数**：使用命令中指定的所有参数
-- ✅ **相同环境**：使用相同的 Python 和 PyTorch 版本
-
----
-
-## 📚 参考资料
-
-- Vaswani et al., "Attention Is All You Need" (2017)
-- Shaw et al., "Self-Attention with Relative Position Representations" (2018)
-- Katharopoulos et al., "Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention" (2020)
+-  **固定随机种子**：所有命令都包含 `--seed 3407`
+-  **固定超参数**：使用命令中指定的所有参数
+-  **相同环境**：使用相同的 Python 和 PyTorch 版本
 
 
-**最后更新**：2025年
+
+**最后更新**：2025年11月8日
 
